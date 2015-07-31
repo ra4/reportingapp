@@ -23,6 +23,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::resource('/user','UsersController@index');
 
 Route::resource('/users','Admin\UsersController'); 
+Route::resource('/reports','ReportsController'); 
 
 
  

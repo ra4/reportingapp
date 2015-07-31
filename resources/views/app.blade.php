@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+         <meta name="_token" content="{{ csrf_token() }}" />
         <title>Ueye Technologies</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -20,6 +21,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>{!! link_to('users', 'Dashboard') !!}</li>
                         <li>{!! link_to('auth/logout', 'Logout') !!}</li>
+                        <li>{!! link_to('reports/create', 'Submit Report') !!}</li>
                     </ul>
                 </li>
                 @endif

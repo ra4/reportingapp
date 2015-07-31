@@ -32,4 +32,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    
+     public function reports(){
+        
+        return $this->hasMany('App\Report');
+    }
+    
+   
 }
