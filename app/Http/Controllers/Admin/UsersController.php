@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 
+use App\Http\Requests\EditUserRequest;
+
+use App\User;
+use DB;
 class UsersController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(4);
         return view('backend.index',compact('users'));
     }
 
@@ -72,15 +74,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id , Request $request)
+    public function update($id , EditUserRequest $request)
     {
-        $users=User::findOrFail($id);
-      
-        
+        $users = User::findorFail($id);
         $users->update($request->all());
         \Session::flash('flash_message', 'User has been updated!'); 
-      
-        
         return redirect('/users');
         
         

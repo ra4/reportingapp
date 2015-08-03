@@ -25,7 +25,7 @@
             <td>
                 {!! link_to_route('users.edit', "Edit", $user->id) !!}
                 {!! Form::open(['method' => 'DELETE', 'route' => array('users.destroy', $user->id),'onsubmit' => 'return ConfirmDelete()']) !!}
-                {!! Form::submit('Delete') !!}
+                {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!} 
             </td>
 
@@ -34,6 +34,15 @@
         @endforeach
     </tbody>
 </table>
+
+ <div class="pull-left">
+        {!! $users->total() !!} user(s) total
+    </div>
+
+    <div class="pull-right">
+        {!! $users->render() !!}
+    </div>
+   <div class="clearfix"></div>
 @stop
 @section('footer')
 

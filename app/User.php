@@ -35,7 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     
     
     /**
-     * The attributes excluded from the model's JSON form.
+     * A user has many reports.
      *
      * @var array
      */

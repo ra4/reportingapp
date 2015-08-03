@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Report extends Model
 {
@@ -20,7 +21,12 @@ class Report extends Model
      */
     protected $fillable = ['title', 'content','user_id','worked_on'];
     
-    
+    public function setWorkedOnAttribute($date){
+        
+        
+       $this->attributes['worked_on'] =Carbon::createFromFormat('Y-m-d',$date);
+        
+    }
      /**
      * The reports belongs to single user.
      *

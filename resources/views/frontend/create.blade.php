@@ -1,16 +1,24 @@
 @extends ('app')
 
 @section('page-header')
-    <h1>
+    <h1 align='center'>
      Submit Your Report
     </h1>
 @endsection
 @section('content')
    
-  
+   @if($errors->any())
+   <div class="container">
+   <ul class='alert alert-danger col-lg-8 col-lg-push-2'>
+       @foreach($errors->all() as $error)
+       <li>{{ $error }}</li>
+       @endforeach
+       </ul>
+       </div>
+   @endif
    
     {!! Form::open(['class' => 'form-horizontal','url'=>'reports']) !!}
-    {!! Form::hidden('user_id', 1) !!}
+    
             <div class="form-group">
             <label class="col-lg-2 control-label">Title</label>
             <div class="col-lg-10">
@@ -43,4 +51,5 @@
         </div>
 
     {!! Form::close() !!}
+    
 @stop

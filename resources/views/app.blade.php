@@ -8,20 +8,24 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+       
     </head>
     <body>
         <section class="content-header container">
+           
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                 <li>{!! link_to('auth/login', 'Login') !!}</li>
                 <li>{!! link_to('auth/register', 'Register') !!}</li>
                 @else
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->first_name }} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, {{ Auth::user()->first_name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>{!! link_to('users', 'Dashboard') !!}</li>
-                        <li>{!! link_to('auth/logout', 'Logout') !!}</li>
                         <li>{!! link_to('reports/create', 'Submit Report') !!}</li>
+                        <li>{!! link_to('reports', 'Users Reports') !!}</li>
+                        <li>{!! link_to('auth/logout', 'Logout') !!}</li>
                     </ul>
                 </li>
                 @endif

@@ -1,15 +1,23 @@
 @extends ('app')
 
 @section('page-header')
-    <h1>
+    <h1 align='center'>
       Edit User
     </h1>
 @endsection
 @section('content')
-   
+   @if($errors->any())
+   <div class="container">
+   <ul class='alert alert-danger col-lg-8 col-lg-push-2'>
+       @foreach($errors->all() as $error)
+       <li>{{ $error }}</li>
+       @endforeach
+       </ul>
+       </div>
+   @endif
   
     {!! Form::model($users , ['class' => 'form-horizontal', 'role' => 'form', 'action'=>['Admin\UsersController@update' , $users->id] , 'method' => 'PATCH']) !!}
-          <div class="container">   
+          <div class="container col-lg-8 col-lg-push-2">   
         <div class="form-group">
             <label class="col-lg-2 control-label">First Name</label>
             <div class="col-lg-10">

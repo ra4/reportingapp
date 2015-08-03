@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Report;
-use App\Http\Requests;
+use App\Http\Requests\CreateReportRequest;
 use App\Http\Controllers\Controller;
-use Request;
+use BD;
 use Auth;
 class ReportsController extends Controller
 {
@@ -17,11 +17,13 @@ class ReportsController extends Controller
      */
     public function index()
     {
+        $reports=Report::with('user')->paginate(3);
+        return view('frontend.index',compact('reports'));
         
     }
 
     /**
-     * Show the form for creating a new report.
+     * Show the form for creating a new .
      *
      * @return Response
      */
@@ -36,9 +38,9 @@ class ReportsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateReportRequest $request)
     {
-        $input=Request::all();
+        $input=$request->all();
         $input['user_id']=Auth::user()->id;
         Report::create($input);
         
