@@ -24,6 +24,8 @@ Route::resource('/user','UsersController@index');
 
 Route::resource('/users','Admin\UsersController'); 
 Route::resource('/reports','ReportsController'); 
+Route::get('/reports/{reports}/{reports}/dates/{dates}', [
+'as' => 'show', 'uses' => 'ReportsController@show']);
 
 
  

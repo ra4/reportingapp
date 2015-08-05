@@ -34,7 +34,7 @@
          <div class="form-group">
             <label class="col-lg-2 control-label">Worked on</label>
             <div class="col-lg-10">
-                {!! Form::input('date','worked_on', date('Y-m-d'), ['class' => 'form-control']) !!}
+                {!! Form::input('date','worked_on',null, ['class' => 'form-control' , 'id'=> 'datepicker']) !!}
             </div>
         </div><!--form control-->
 
@@ -51,5 +51,12 @@
         </div>
 
     {!! Form::close() !!}
-    
+   <script>
+    $(function(){
+        $('#datepicker').datepicker({
+                    format: 'yyyy-mm-dd',
+                    
+     }).datepicker("setDate", "0");  ;
+    }) 
+   </script> 
 @stop

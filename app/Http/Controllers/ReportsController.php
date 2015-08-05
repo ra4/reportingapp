@@ -6,8 +6,8 @@ namespace App\Http\Controllers;
 use App\Report;
 use App\Http\Requests\CreateReportRequest;
 use App\Http\Controllers\Controller;
-
 use Auth;
+use App\User;
 
 class ReportsController extends Controller
 {
@@ -16,11 +16,10 @@ class ReportsController extends Controller
      *
      * @return Response
      */
-    public function index()
-    {
-        $reports=Report::with('user')->paginate( config('app.pagination_limit') );
-        return view('frontend.index',compact('reports'));
-        
+    public function index() {   
+       $users_list=User::all();
+       $reports=Report::latest()->with('user')->paginate(  config('app.pagination_limit')  );
+       return view('frontend.index',compact(['users_list','reports']));
     }
 
     /**
@@ -55,9 +54,14 @@ class ReportsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($id, $eventId)
     {
-        //
+        $user=Report::with('user')
+                ->where('user_id', '=', $id)
+//                ->where('user_id', '=', $id)
+                ->get();
+       
+        return view('frontend.show',compact(['user']));
     }
 
     /**

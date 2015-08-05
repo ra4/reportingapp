@@ -2,3 +2,12 @@
   border: 1px solid #dcdcdc;
   margin-bottom: 20px;
 } 
+.table-condensed .day {
+  cursor: pointer;
+}
+.table-condensed .day:hover {
+  background:#0056CC;
+}
+.table-condensed .prev, .table-condensed .next {
+  cursor: pointer;
+}
