@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EditUserRequest;
 
 use App\User;
-use DB;
 class UsersController extends Controller
 {
     /**
@@ -19,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(4);
+        $users = User::paginate( config('app.pagination_limit') );
         return view('backend.index',compact('users'));
     }
 

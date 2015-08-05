@@ -6,8 +6,9 @@ namespace App\Http\Controllers;
 use App\Report;
 use App\Http\Requests\CreateReportRequest;
 use App\Http\Controllers\Controller;
-use BD;
+
 use Auth;
+
 class ReportsController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $reports=Report::with('user')->paginate(3);
+        $reports=Report::with('user')->paginate( config('app.pagination_limit') );
         return view('frontend.index',compact('reports'));
         
     }
