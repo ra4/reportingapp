@@ -6,7 +6,7 @@
     </h1>
 @endsection
 @section('content')
-  {!! Form::open(array('method' => 'PUT' , route('show',['filer_from'=> $eventId,]), 'class'=>'form-horizontal')) !!}
+  {!! Form::open(array('method' => 'PUT' , 'class'=>'form-horizontal')) !!}
   <div class="row">   
   <div class="form-group"> 
       <label for="sel1" class="col-lg-2 control-label">Select User</label>

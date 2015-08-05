@@ -54,7 +54,7 @@ class ReportsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id, $eventId)
+    public function show($id)
     {
         $user=Report::with('user')
                 ->where('user_id', '=', $id)
