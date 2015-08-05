@@ -11,3 +11,13 @@
 .table-condensed .prev, .table-condensed .next {
   cursor: pointer;
 }
+.table-condensed .disabled.day {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.table-condensed .disabled.day:hover {
+  background: white;
+}
+ .row.filter_form_css{
+    float:right;
+}

@@ -51,12 +51,5 @@
         </div>
 
     {!! Form::close() !!}
-   <script>
-    $(function(){
-        $('#datepicker').datepicker({
-                    format: 'yyyy-mm-dd',
-                    
-     }).datepicker("setDate", "0");  ;
-    }) 
-   </script> 
+  
 @stop

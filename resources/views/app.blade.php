@@ -42,6 +42,6 @@
             @yield('content')
 
         </section>
-        @yield('footer')
+        @include('backend.includes.footer')
     </body>
 </html>

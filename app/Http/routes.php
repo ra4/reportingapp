@@ -23,7 +23,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::resource('/user','UsersController@index');
 
 Route::resource('/users','Admin\UsersController'); 
+//Route::post('/reports/filter',[
+//    'as' => 'filter', 'uses' => 'UserController@postFilter'
+//]);
+Route::post('/reports/filter','ReportsController@filter'); 
 Route::resource('/reports','ReportsController'); 
 
 
- 

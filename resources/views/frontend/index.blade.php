@@ -6,12 +6,12 @@
     </h1>
 @endsection
 @section('content')
-  {!! Form::open(array('method' => 'PUT' , 'class'=>'form-horizontal')) !!}
-  <div class="row">   
+  {!! Form::open(array('method' => 'POST' ,'action'=> ['ReportsController@filter'], 'class'=>'form-horizontal')) !!}
+  <div class="row filter_form_css">   
   <div class="form-group"> 
-      <label for="sel1" class="col-lg-2 control-label">Select User</label>
-   <div class="col-lg-10">
-   <select class="form-group" id="userId" >
+       <label for="sel1" class="col-lg-8 control-label">Select User</label>
+   <div class="col-lg-12" align="center">
+      <select class="form-group" id="userId" name="user_id" >
        <option value="">Select user</option>
        @foreach($users_list as $user) 
     <option value="{{ $user->id }}"> <a href="javascript:void(0);">{{ ucfirst($user->first_name) }} {{ ucfirst($user->last_name) }}</a></option>
@@ -22,17 +22,17 @@
    <div class="form-group">
             <label class="col-lg-2 control-label">From</label>
             <div class="col-lg-10">
-                {!! Form::input('date','filter_from',null, ['class' => 'form-control' , 'id'=> 'datepickerfrom']) !!}
+                {!! Form::input('text','filter_from',null, ['class' => 'form-control' , 'id'=> 'datepickerfrom']) !!}
             </div>
         </div>
    <div class="form-group">
             <label class="col-lg-2 control-label">to</label>
             <div class="col-lg-10">
-                {!! Form::input('date','filter_to',null, ['class' => 'form-control' , 'id'=> 'datepickerto']) !!}
+                {!! Form::input('text','filter_to',null, ['class' => 'form-control' , 'id'=> 'datepickerto']) !!}
             </div>
         </div>
    <div class="pull-right">
-      <button type="button" class="btn btn-info get_id">Info</button>
+      <button type="submit" class="btn btn-info ">Info</button>
       </div>
    </div>
   {!! Form::close() !!}
@@ -62,26 +62,5 @@
     </div>
    <div class="clearfix"></div>
    
-   
-   <script>
-      
-    $(function(){
-        $('#datepickerto').datepicker({
-                    format: 'yyyy-mm-dd',
-                    
-     }).datepicker("setDate", "0"); 
-     
-  $('#datepickerfrom ').datepicker({
-                    format: 'yyyy-mm-dd',
-                    
-     }).datepicker("setDate", "0"); 
-   
-    
-        $(".get_id").click(function(){
-            var userId=$( "#userId" ).val();
-            window.location.href = "/reports/"+userId;
-        });
-    }) ;
-   </script> 
-    @stop
+ @stop
 
