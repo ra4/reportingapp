@@ -1,7 +1,15 @@
 @extends('app')
 
 @section('content')
-
+@if($errors->any())
+    <div class="container">
+    <ul class='alert alert-danger col-lg-8 col-lg-push-2'>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+     </ul>
+     </div>
+@endif
 <div class="container-inner" style="margin-top:100px">
 
     <div class="col-md-push-4 col-md-4">
