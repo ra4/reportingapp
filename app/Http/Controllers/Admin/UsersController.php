@@ -11,16 +11,26 @@ use App\Http\Requests\EditUserRequest;
 use App\User;
 class UsersController extends Controller
 {
+    
+    
+    public function __construct(){
+        
+        $this->middleware('auth');
+        
+        
+    }
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index()
-    {
+    {   
+        
         $users = User::paginate( config('app.pagination_limit') );
         return view('backend.index',compact('users'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
