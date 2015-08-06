@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Report;
+use App\Attendence;
 use App\Http\Requests\CreateReportRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -50,10 +51,17 @@ class ReportsController extends Controller
      */
     public function store(CreateReportRequest $request)
     {
-        $input=$request->all();
-        $input['user_id']=Auth::user()->id;
-        Report::create($input);
-        
+        $input = $request->all();
+        $attendence['user_id'] = $input['user_id'] = Auth::user()->id;
+        $work_type = $input['work_type'];
+        unset($input['work_type']);
+        $report_id = Report::create($input);
+        if( $report_id ) {
+            $attendence['report_id'] = $report_id->id;
+            $attendence['work_type'] = $work_type;
+            Attendence::create($attendence);
+//            echo $report_id->id; exit;
+        }
         return redirect('/users');
         
     }
@@ -76,7 +84,7 @@ class ReportsController extends Controller
     
     public function filter( Request $request) {
         extract($request->all());
-        $user = Report::with('user');
+        $user = Report::latest()->with('user');
         if( $user_id ){ 
             $user = $user->where('user_id', '=', $user_id );
         }
@@ -86,10 +94,7 @@ class ReportsController extends Controller
         }
         $user = $user->get();
         return view('frontend.show',compact(['user']));
-//        $user = $user->get();
-//        echo "<pre>";
-//        print_r((array)$user);
-//        exit;
+
     }
 
     /**

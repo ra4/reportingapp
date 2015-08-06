@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReportsTable extends Migration
+class CreateAttendencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+       Schema::create('attendences', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
-            $table->string('title');
-            $table->text('content');
+            $table->string('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('report_id')->references('id')->on('reports')->onDelete('cascade');
+            $table->string('work_type');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('reports');
+         Schema::drop('attendences');
     }
 }

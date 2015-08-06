@@ -18,6 +18,7 @@
 .table-condensed .disabled.day:hover {
   background: white;
 }
- .row.filter_form_css{
-    float:right;
+.row.filter_form_css {
+  position: fixed;
+  right: 5%;
 }

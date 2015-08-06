@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>List Users</h1>
+<h2>List Users</h2>
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>

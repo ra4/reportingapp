@@ -19,7 +19,7 @@ class Report extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content','user_id','worked_on'];
+    protected $fillable = ['title', 'content','user_id','worked_on','work_type'];
     
     public function setWorkedOnAttribute($date){
         
@@ -38,6 +38,12 @@ class Report extends Model
         return $this->belongsTo('App\User');
         
     }
+//     public function attendences(){
+//        
+//        return $this->hasMany('App\');
+//        
+//    }
+    
     
    
 }

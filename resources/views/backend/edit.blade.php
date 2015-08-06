@@ -1,9 +1,9 @@
 @extends ('app')
 
 @section('page-header')
-    <h1 align='center'>
+    <h2 align='center'>
       Edit User
-    </h1>
+    </h2>
 @endsection
 @section('content')
    @if($errors->any())

@@ -26,7 +26,8 @@ class CreateReportRequest extends Request
         return [
             'title'=>'required|between:3,50',
             'content'=>'required',
-            'worked_on'=>'required|date'
+            'worked_on'=>'required|date',
+            'work_type'=>'required'
         ];
     }
 }

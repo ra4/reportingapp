@@ -1,9 +1,9 @@
 @extends ('app')
 
 @section('page-header')
-    <h1 align='center'>
+    <h2 align='center'>
      Users Reports
-    </h1>
+    </h2>
 @endsection
 @section('content')
   {!! Form::open(array('method' => 'POST' ,'action'=> ['ReportsController@filter'], 'class'=>'form-horizontal')) !!}
@@ -48,7 +48,7 @@
       <p><strong>Work date</strong> - {{ $report->worked_on }} </p>
       <p><strong>Submitted date</strong> - {{ $report->created_at }}</p>
       <p><strong>Title</strong> - {{ $report->title }}</p>
-      <p><strong>Summary</strong> - {{ $report->content }}</p>
+      <p><strong>Summary</strong> - {!! nl2br($report->content) !!}</p>
   </div>
 </div> 
  
