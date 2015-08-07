@@ -32,7 +32,9 @@
                                 <input name="remember" type="checkbox" value="Remember Me">Remember Me
                             </label>
                         </div>
-                        <button class="btn btn-lg btn-success" name="submit" type="submit">Login</button>
+                        <button class="btn btn-lg btn-success" name="submit" type="submit">Login</button><br><br>
+                        {!! link_to('password/email', 'Forgot Your Password?') !!} 
+                       
                     </fieldset>
                 </form>
             </div>

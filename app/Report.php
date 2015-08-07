@@ -24,7 +24,7 @@ class Report extends Model
     public function setWorkedOnAttribute($date){
         
         
-       $this->attributes['worked_on'] =Carbon::createFromFormat('Y-m-d',$date);
+       $this->attributes['worked_on'] =Carbon::parse($date);
         
     }
      /**
