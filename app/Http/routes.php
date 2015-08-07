@@ -25,6 +25,7 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::resource('/user','UsersController');
+Route::resource('/home','UsersController');
 
 Route::resource('/users','Admin\UsersController'); 
 //Route::post('/reports/filter',[
