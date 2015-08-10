@@ -24,7 +24,7 @@ class CreateReportRequest extends Request
     public function rules()
     {
         return [
-            'title'=>'required|between:3,50',
+            'title'=>'required|between:3,100',
             'content'=>'required',
             'worked_on'=>'required|date',
             'work_type'=>'required'

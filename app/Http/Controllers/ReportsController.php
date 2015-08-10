@@ -81,6 +81,13 @@ class ReportsController extends Controller
        
         return view('frontend.show',compact(['user']));
     }
+      /**
+     * Display the specified filter records.
+     *
+     * 
+     * @return Response
+     */
+    
     
     public function filter( Request $request) {
         extract($request->all());

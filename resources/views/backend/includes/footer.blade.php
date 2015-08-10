@@ -3,6 +3,7 @@
     $(function() {
         $('#datepickerfrom, #datepickerto').datepicker({
             format: 'yyyy-mm-dd',
+            autoclose: true, 
             endDate: new Date()
         });
         
@@ -12,6 +13,7 @@
 
         $('#datepicker').datepicker({
             format: 'yyyy-mm-dd',
+            autoclose: true,
         }).datepicker("setDate", "0");
         
     })

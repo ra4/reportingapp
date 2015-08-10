@@ -17,7 +17,7 @@
 </div>
 @endif
 
-{!! Form::open(['class' => 'form-horizontal','url'=>'reports']) !!}
+{!! Form::open(['class' => 'form-horizontal','url'=>'reports','files'=>true]) !!}
 
 <div class="form-group">
     <label class="col-lg-2 control-label">Title</label>
