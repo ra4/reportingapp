@@ -49,6 +49,11 @@
       <p><strong>Submitted date</strong> - {{ $report->created_at }}</p>
       <p><strong>Title</strong> - {{ $report->title }}</p>
       <p><strong>Summary</strong> - {!! nl2br($report->content) !!}</p>
+      <p><strong>Actions</strong>:- {!! Form::open(['method' => 'DELETE', 'route' => array('reports.destroy', $report->id),'onsubmit' => 'return ConfirmDelete()']) !!}
+                                   {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
+                                   {!! Form::close() !!} 
+               
+            </p>
   </div>
 </div> 
  
@@ -62,5 +67,18 @@
     </div>
    <div class="clearfix"></div>
    
+   
+   <script>
+
+    function ConfirmDelete()
+    {
+        var x = confirm("Are you sure you want to delete this user ?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+
+</script>
  @stop
 

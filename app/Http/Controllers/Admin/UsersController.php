@@ -85,13 +85,20 @@ class UsersController extends Controller
      */
     public function update($id , EditUserRequest $request)
     {
-        $users = User::findorFail($id);
-        $users->update($request->all());
+       
+       $input =$request->all();
+       $users = User::findorFail($id);
+       if(isset($input['password'])){
+        $input['password']=bcrypt($input['password']);
+        $users->update($input);
+       }else{
+        unset($input['password']);
+        $users->update($input); 
+       }
+        
         \Session::flash('flash_message', 'User has been updated!'); 
         return redirect('/users');
-        
-        
-    }
+     }
 
     /**
      * Remove the specified resource from storage.

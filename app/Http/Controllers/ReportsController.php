@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Report;
 use App\Attendence;
 use App\Http\Requests\CreateReportRequest;
+use App\Http\Requests\EditReportRequest;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -122,9 +124,9 @@ class ReportsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update($id , EditUserRequest $request)
     {
-        //
+        
     }
 
     /**
@@ -135,6 +137,7 @@ class ReportsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Report::destroy($id);
+        return redirect('/reports');
     }
 }
