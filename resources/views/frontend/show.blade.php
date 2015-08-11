@@ -17,6 +17,7 @@
       <p><strong>Work date</strong> - {{ $single_user->worked_on }} </p>
       <p><strong>Submitted date</strong> - {{ $single_user->created_at }}</p>
       <p><strong>Title</strong> - {{ $single_user->title }}</p>
+      <p><strong>Job Type</strong> - {{ $single_user->attendence['work_type']['name'] }}</p>
       <p><strong>Summary</strong> - {!! nl2br($single_user->content) !!}</p>
   </div>
 </div> 

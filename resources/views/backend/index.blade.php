@@ -43,10 +43,7 @@
         {!! $users->render() !!}
     </div>
    <div class="clearfix"></div>
-@stop
-@section('footer')
-
-<script>
+   <script>
 
     function ConfirmDelete()
     {
@@ -59,3 +56,4 @@
 
 </script>
 @stop
+@section('footer')

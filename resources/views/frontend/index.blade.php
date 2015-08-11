@@ -4,6 +4,7 @@
     <h2 align='center'>
      Users Reports
     </h2>
+
 @endsection
 @section('content')
   {!! Form::open(array('method' => 'POST' ,'action'=> ['ReportsController@filter'], 'class'=>'form-horizontal')) !!}
@@ -36,7 +37,6 @@
       </div>
    </div>
   {!! Form::close() !!}
-   
   
    @foreach($reports as $report)
  <div class="row">
@@ -48,9 +48,10 @@
       <p><strong>Work date</strong> - {{ $report->worked_on }} </p>
       <p><strong>Submitted date</strong> - {{ $report->created_at }}</p>
       <p><strong>Title</strong> - {{ $report->title }}</p>
+      <p><strong>Job Type</strong> - {{ $report->attendence['work_type']['name'] }}</p>
       <p><strong>Summary</strong> - {!! nl2br($report->content) !!}</p>
       <p><strong>Actions</strong>:- {!! Form::open(['method' => 'DELETE', 'route' => array('reports.destroy', $report->id),'onsubmit' => 'return ConfirmDelete()']) !!}
-                                   {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
+                                   {!! Form::submit('Delete Report', ['class' => 'btn btn-primary']) !!}
                                    {!! Form::close() !!} 
                
             </p>
