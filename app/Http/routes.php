@@ -24,11 +24,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register' , 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::resource('/user','UsersController');
 Route::get('/home', ['as' => '/users', 'uses' => 'Admin\UsersController@index']);
-Route::resource('/users','Admin\UsersController');
-//Route::post('/reports/filter',[
-//    'as' => 'filter', 'uses' => 'UserController@postFilter'
-//]);
+
+$router->group(['middleware' => ['auth','roles'], 'roles' => ['admin']], function() {
+    Route::resource('/users','Admin\UsersController');
+});
+
 Route::post('/reports/filter','ReportsController@filter'); 
 Route::resource('/reports','ReportsController');
