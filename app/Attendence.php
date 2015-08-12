@@ -19,7 +19,7 @@ class Attendence extends Model
      * @var array
      * work_type => 1 (Full day), 2 (Half day), 3 (work from home)
      */
-    protected $fillable = ['user_id', 'report_id','work_type'];
+    protected $fillable = ['user_id', 'report_id','work_type_id'];
     
     
      /**
@@ -36,8 +36,14 @@ class Attendence extends Model
     
      public function report(){
         
-        return $this->belongsTo('App\Report');
+        return $this->belongsTo('App\Report','report_id','id');
         
     }
+    
+     public function work_type()
+    {
+        return $this->belongsTo('App\WorkType','work_type_id','id');
+    }
+
 }
 

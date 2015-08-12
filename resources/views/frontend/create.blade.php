@@ -48,17 +48,17 @@
    <label class="col-lg-2 control-label">Work Type</label>
     <div class="col-lg-2 ">
         <label>Full Day
-        {!! Form::radio('work_type', '1',true) !!}
+        {!! Form::radio('work_type_id', '1',true) !!}
           </label>
     </div>
     <div class="col-lg-2 ">
         <label>Half Day
-       {!! Form::radio('work_type', '2') !!}
+       {!! Form::radio('work_type_id', '2') !!}
        </label>
     </div>
     <div class="col-lg-2 ">
         <label>Work From Home
-        {!! Form::radio('work_type', '3') !!}
+        {!! Form::radio('work_type_id', '3') !!}
            </label>
 
     </div>

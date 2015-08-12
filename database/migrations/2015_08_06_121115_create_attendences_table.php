@@ -16,7 +16,7 @@ class CreateAttendencesTable extends Migration
             $table->increments('id');
             $table->string('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('report_id')->references('id')->on('reports')->onDelete('cascade');
-            $table->string('work_type');
+            $table->string('work_type_id')->references('id')->on('work_types')->onDelete('cascade');;
             $table->timestamps();
         });
     }

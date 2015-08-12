@@ -37,13 +37,12 @@ class Report extends Model
         
         return $this->belongsTo('App\User');
         
-    }
-//     public function attendences(){
-//        
-//        return $this->hasMany('App\');
-//        
-//    }
-    
-    
-   
-}
+     }
+     
+      public function attendence() {
+         return $this->hasOne('App\Attendence','report_id','id');
+     }
+     
+     
+     
+   }
