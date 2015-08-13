@@ -1,23 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\User;
-use App\Report;
-use App\WorkType;
-use App\Attendence;
 use App\Http\Requests\CreateReportRequest;
 use App\Http\Requests\EditReportRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\User;
+use Route;
+use App\Report;
+use App\WorkType;
+use App\Attendence;
 
 class ReportsController extends Controller {
 
     public function __construct() {
 
         $this->middleware('auth');
+        
     }
 
     /**
@@ -26,6 +27,7 @@ class ReportsController extends Controller {
      * @return Response
      */
     public function index() {
+        
         $users_list = User::all();
         $reports = Report::latest()->with(['user','attendence.work_type'])->paginate(config('app.pagination_limit'));
         return view('frontend.index', compact(['users_list', 'reports']));
@@ -58,7 +60,8 @@ class ReportsController extends Controller {
             Attendence::create($attendence);
 //            echo $report_id->id; exit;
         }
-        return redirect('/users');
+         \Session::flash('flash_message_report', 'Your Report has been submitted successfully.!'); 
+        return redirect('/reports/create');
     }
 
     /**

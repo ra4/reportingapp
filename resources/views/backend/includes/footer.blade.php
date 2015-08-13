@@ -17,5 +17,9 @@
         }).datepicker("setDate", "0");
         
     })
+    
+    $.ajaxSetup({
+   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+});
 
  </script> 

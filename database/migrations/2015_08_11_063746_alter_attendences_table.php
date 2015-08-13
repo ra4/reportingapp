@@ -12,8 +12,8 @@ class AlterAttendencesTable extends Migration
      */
     public function up()
     {
-        Schema::table('attendences', function($table) {
-         $table->renameColumn('work_type', 'work_type_id');
+        Schema::table('users', function($table) {
+         $table->dropColumn('test');
          });
     }
 

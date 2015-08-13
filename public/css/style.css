@@ -22,3 +22,7 @@
   position: fixed;
   right: 5%;
 }
+.form-group.assign_role {
+  margin-top: 20px;
+  position: relative;
+}

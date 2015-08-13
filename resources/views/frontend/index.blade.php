@@ -50,11 +50,14 @@
       <p><strong>Title</strong> - {{ $report->title }}</p>
       <p><strong>Job Type</strong> - {{ $report->attendence['work_type']['name'] }}</p>
       <p><strong>Summary</strong> - {!! nl2br($report->content) !!}</p>
+      
+      @if(Auth::user()->role_id !='3')
       <p><strong>Actions</strong>:- {!! Form::open(['method' => 'DELETE', 'route' => array('reports.destroy', $report->id),'onsubmit' => 'return ConfirmDelete()']) !!}
                                    {!! Form::submit('Delete Report', ['class' => 'btn btn-primary']) !!}
                                    {!! Form::close() !!} 
                
             </p>
+            @endif
   </div>
 </div> 
  

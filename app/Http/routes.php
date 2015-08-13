@@ -15,6 +15,8 @@
 Route::controllers([
    'password' => 'Auth\PasswordController',
 ]);
+
+
 Route::get('/', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -24,11 +26,18 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register' , 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::resource('/user','UsersController');
-Route::get('/home', ['as' => '/users', 'uses' => 'Admin\UsersController@index']);
-Route::resource('/users','Admin\UsersController');
-//Route::post('/reports/filter',[
-//    'as' => 'filter', 'uses' => 'UserController@postFilter'
-//]);
-Route::post('/reports/filter','ReportsController@filter'); 
+Route::resource('/user','UserController');
 Route::resource('/reports','ReportsController');
+Route::post('/reports/filter','ReportsController@filter'); 
+
+
+$router->group(['middleware' => ['auth','roles'], 'roles' => ['super_admin']], function() {
+    Route::resource('/users','Admin\UsersController');
+    Route::resource('/roles','Admin\RolesController');
+    Route::post('/roles/assign','Admin\RolesController@assign');
+    
+    Route::get('/home', ['as' => '/users', 'uses' => 'Admin\UsersController@index']);
+});
+
+
+

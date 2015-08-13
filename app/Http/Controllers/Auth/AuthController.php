@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Report;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -28,7 +29,7 @@ class AuthController extends Controller
      *
      * @return void
      */
-    protected $redirectTo = '/users';
+    protected $redirectTo = '';
     
     public function __construct()
     {
@@ -68,4 +69,6 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    
+   
 }
