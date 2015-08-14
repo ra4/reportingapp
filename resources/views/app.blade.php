@@ -1,27 +1,13 @@
-   @include('backend.includes.header')
+   @include('includes.header')
         <section class="content-header container">
-            @include('backend.includes.nav')
+            @include('includes.nav')
             @yield('page-header')
         </section>
    <section class="container">
-       @if(Session::has('flash_message_report'))
-            <p class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" area-hidden="true">&times;</button>
-                {{ Session::get('flash_message_report') }}</p>
-            @endif
-            @if(Session::has('flash_message_assign_role'))
-            <p class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" area-hidden="true">&times;</button>
-                {{ Session::get('flash_message_assign_role') }}</p>
-            @endif
-            @if(Session::has('flash_message'))
-            <p class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" area-hidden="true">&times;</button>
-                {{ Session::get('flash_message') }}</p>
-            @endif
+       @include('includes.partials.messages')
             @yield('content')
 
         </section>
-        @include('backend.includes.footer')
+        @include('includes.footer')
     </body>
 </html>

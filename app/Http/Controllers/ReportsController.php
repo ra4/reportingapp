@@ -30,7 +30,7 @@ class ReportsController extends Controller {
         
         $users_list = User::all();
         $reports = Report::latest()->with(['user','attendence.work_type'])->paginate(config('app.pagination_limit'));
-        return view('frontend.index', compact(['users_list', 'reports']));
+        return view('reports.index', compact(['users_list', 'reports']));
     }
 
     /**
@@ -39,7 +39,7 @@ class ReportsController extends Controller {
      * @return Response
      */
     public function create() {
-        return view('frontend.create');
+        return view('reports.create');
     }
 
     /**
@@ -76,7 +76,7 @@ class ReportsController extends Controller {
 //                ->where('user_id', '=', $id)
                 ->get();
 
-        return view('frontend.show', compact(['user']));
+        return view('reports.show', compact(['user']));
     }
 
     /**
@@ -96,7 +96,7 @@ class ReportsController extends Controller {
                     ->where('worked_on', '<=', $filter_to);
         }
         $user = $user->get();
-        return view('frontend.show', compact(['user']));
+        return view('reports.show', compact(['user']));
     }
 
     /**

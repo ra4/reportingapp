@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Role;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -48,7 +49,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       $user_profile = User::with('role')->find($id);
+       return view('user.show', compact('user_profile'));
+                
     }
 
     /**

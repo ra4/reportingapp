@@ -27,7 +27,7 @@ class RolesController extends Controller {
     public function index() {
         $users_list = User::all();
         $roles = Role::all();
-        return view('backend.admin.index', compact('users_list', 'roles'));
+        return view('admin.roles.index', compact('users_list', 'roles'));
     }
 
     /**

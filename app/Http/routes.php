@@ -35,7 +35,6 @@ $router->group(['middleware' => ['auth','roles'], 'roles' => ['super_admin']], f
     Route::resource('/users','Admin\UsersController');
     Route::resource('/roles','Admin\RolesController');
     Route::post('/roles/assign','Admin\RolesController@assign');
-    
     Route::get('/home', ['as' => '/users', 'uses' => 'Admin\UsersController@index']);
 });
 

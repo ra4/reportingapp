@@ -28,7 +28,7 @@ class UsersController extends Controller
     {   
         
         $users = User::paginate( config('app.pagination_limit') );
-        return view('backend.index',compact('users'));
+        return view('admin.users.index',compact('users'));
     }
     
 
@@ -73,7 +73,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $users=User::findOrFail($id);
-        return view('backend.edit',compact('users'));
+        return view('admin.users.edit',compact('users'));
     }
 
     /**
