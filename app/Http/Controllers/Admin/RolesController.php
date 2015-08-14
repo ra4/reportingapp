@@ -110,7 +110,7 @@ class RolesController extends Controller {
                 ->update(['role_id' => $role_id]);
         
          \Session::flash('message', 'User Role has been changed by Super admin.!'); 
-         \Session::flash('messsage-type', 'success'); 
+         \Session::flash('message-type', 'success'); 
         return redirect('/roles');
     }
 
