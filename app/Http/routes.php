@@ -40,5 +40,3 @@ $router->group(['middleware' => ['auth','roles'], 'roles' => ['super_admin', 'ad
 
 Route::get('/users/{users}/edit','Admin\UsersController@edit');
 Route::patch('/users/{users}','Admin\UsersController@update');
-
-

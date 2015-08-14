@@ -13,8 +13,8 @@ class AlterAttendencesTable extends Migration
     public function up()
     {
         Schema::table('users', function($table) {
-         $table->dropColumn('test');
-         });
+         $table->renameColumn('work_type', 'work_type_id');
+        });
     }
 
     /**
