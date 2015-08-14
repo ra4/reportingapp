@@ -30,10 +30,7 @@ Route::resource('/user','UserController');
 Route::resource('/reports','ReportsController');
 Route::post('/reports/filter','ReportsController@filter'); 
 
-
-
-
-$router->group(['middleware' => ['auth','roles'], 'roles' => ['super_admin','admin']], function() {
+$router->group(['middleware' => ['auth','roles'], 'roles' => ['super_admin', 'admin']], function() {
     Route::resource('/users','Admin\UsersController');
     Route::resource('/roles','Admin\RolesController');
     Route::post('/roles/assign','Admin\RolesController@assign');
