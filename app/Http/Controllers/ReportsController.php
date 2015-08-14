@@ -60,7 +60,8 @@ class ReportsController extends Controller {
             Attendence::create($attendence);
 //            echo $report_id->id; exit;
         }
-         \Session::flash('flash_message_report', 'Your Report has been submitted successfully.!'); 
+         \Session::flash('message', 'Your Report has been submitted successfully.!'); 
+         \Session::flash('message-type', 'success'); 
         return redirect('/reports/create');
     }
 

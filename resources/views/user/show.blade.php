@@ -32,11 +32,12 @@
               <label class="lb-in-xs">Mobile No.</label>
               <span>42424214214214</span>
           </div>
-          
       </div>
       
       <div class="col-md-12">
-          <b>Other description hehre</b>
+          @if(Auth::user()->id==$user_profile->id || Auth::user()->role_id!='3' )
+           {!! link_to_route('users.edit', "Edit Your Profile", $user_profile->id) !!}
+           @endif
       </div>
   </div>
 </div>

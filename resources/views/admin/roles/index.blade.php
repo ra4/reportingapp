@@ -60,7 +60,7 @@ $(document).ready(function(){
    var user_id =$(this).val();
    $.ajax({
      url:'/roles/'+user_id,
-      type: 'get',
+     type: 'get',
 //       data: { '_token': $('input[name=_token]').val()},
       success: function(response){
           $('#role_id').val($.trim(response.role_id));

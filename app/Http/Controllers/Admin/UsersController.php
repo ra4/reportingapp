@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EditUserRequest;
 
 use App\User;
+
+use Auth;
+
 class UsersController extends Controller
 {
     
@@ -71,7 +74,14 @@ class UsersController extends Controller
      * @return Response
      */
     public function edit($id)
-    {
+    {   
+        $role = Auth::user()->role_id; 
+        $user_id = Auth::user()->id; 
+       if( $role == 3 && $user_id != $id ){
+        \Session::flash('message', 'Not Authorized to edit other users profile');
+        \Session::flash('message-type', 'danger'); 
+         return redirect('/user/'.$user_id);    
+       } 
         $users=User::findOrFail($id);
         return view('admin.users.edit',compact('users'));
     }
@@ -85,7 +95,13 @@ class UsersController extends Controller
      */
     public function update($id , EditUserRequest $request)
     {
-       
+      $role = Auth::user()->role_id; 
+        $user_id = Auth::user()->id; 
+       if( $role == 3 && $user_id != $id ){
+        \Session::flash('message', 'Not Authorized to edit other users profile');
+        \Session::flash('message-type', 'danger'); 
+         return redirect('/user/'.$user_id);    
+       } 
        $input =$request->all();
        $users = User::findorFail($id);
        if(isset($input['password'])){
@@ -96,8 +112,9 @@ class UsersController extends Controller
         $users->update($input); 
        }
         
-        \Session::flash('flash_message', 'User has been updated!'); 
-        return redirect('/users');
+        \Session::flash('message', 'User has been updated!'); 
+         \Session::flash('message-type', 'success'); 
+        return redirect('/user/'.$id);
      }
 
     /**
